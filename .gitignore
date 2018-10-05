@@ -159,4 +159,6 @@ pip-selfcheck.json
 
 dict.json
 
+!.app/scripts
+
 # End of https://www.gitignore.io/api/git,python,virtualenv,visualstudiocode

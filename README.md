@@ -4,9 +4,9 @@ A simple command line application to check crypto prices in terminal
 
 ## Pre-reqs
 
-Mac
+**Mac**
 
-Coinmarketcap's new API Key
+**A coinmartketcap API Key ((FREEEEEEE))**
 
 **This app uses the SANDBOX API but can easily be changed to the live version. Please check the link below for information on how to do that**
 
@@ -14,7 +14,7 @@ https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
 ### Installation
 
-As of now you can only run this can only be set up in a virtual enviroment.
+As of now you can only run this in a virtual enviroment.
 
 First, clone this repository and open up the directory in a terminal.
 

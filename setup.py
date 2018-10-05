@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+setup(
+    name='PyCap',
     version='0.1',
     author='Taiga Ishida',
     author_email='taigaishida.dev@gmail.com',
@@ -10,6 +12,6 @@ from setuptools import setup, find_packages
     ],
     entry_points='''
         [console_scripts]
-        price=app.scripts.price:cli
+        price=app.magic.price:cli
     ''',
 )
