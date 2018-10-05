@@ -12,7 +12,7 @@ A simple command line application to check crypto prices in terminal
 
 https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
-### Installation
+## Installation
 
 As of now you can only run this in a virtual enviroment.
 
