@@ -37,7 +37,9 @@ Now run 'pip install --editable .' and this should install the script in the vir
 
 # Usage
 
-commands supported are [price, portfolio]
+commands : [price, portfolio]
+
+Supported Currency Codes are here: https://pro.coinmarketcap.com/api/v1#section/Standards-and-Conventions
 
 ## price
 
