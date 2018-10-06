@@ -33,7 +33,7 @@ Your terminal should now look like something like '(env) pycap $ '.
 Next, your going to need to export your API_KEY or update the config.py file.
 API_KEY can be exported by running "export API_KEY='include-the-(')'" in the terminal.
 
-Now run 'pip install --editable path/to/directory' and this should install the script in the virtual enviroment.
+Now run 'pip install --editable .' and this should install the script in the virtual enviroment.
 
 # Usage
 
@@ -49,9 +49,7 @@ price also supports different currencies as well as chaining mulitple coins.
 
 'pycap price --curr=usd ada hot' -> [{'Cardano': '0.09934988'}, {'Holo': '0.00060517'}]
 
---curr=XYZ where XYZ is the currency code. Check the link below for supported codes.
-
-https://pro.coinmarketcap.com/api/v1#section/Standards-and-Conventions
+--curr=XYZ where XYZ is the currency code.
 
 ## portfolio
 
