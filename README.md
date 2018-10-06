@@ -4,6 +4,8 @@ A simple CLI using Click with Coinmarketcap's API.
 
 # Pre-reqs
 
+**Python**
+
 **TESTED ONLY ON A MAC**
 
 Working on adding support for other OS's. Windows will not work as of now with how the API_KEY is exported, Linux might work.
