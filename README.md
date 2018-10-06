@@ -12,7 +12,7 @@ Working on adding support for other OS's. Windows will not work as of now with h
 
 Why? Because their public API shuts down in December.
 
-**Currently uses the sandbox site and not the pro site**
+**Currently setup to use the sandbox site and not the live site**
 
 Can easily be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
 
