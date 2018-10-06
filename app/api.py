@@ -6,9 +6,9 @@ from app.helper import loadJSON, loadPort, float_to_str
 
 _base = "https://sandbox-api.coinmarketcap.com"
 
-_info = _base + "/v1/cryptocurrency/info"
+_info = "/v1/cryptocurrency/info"
 
-_latest = _base + "/v1/cryptocurrency/listings/latest"
+_latest = "/v1/cryptocurrency/listings/latest"
 
 _quote = "/v1/cryptocurrency/quotes/latest"
 
