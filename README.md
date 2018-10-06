@@ -22,8 +22,6 @@ https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
 **As of now, this only works in a virtual enviroment in the project directory**
 
-Problems with how the .json files are loaded and exported.
-
 First, clone this repository and open up the directory in a terminal.
 
 Next, run 'python3 -m venv env'. this should work in python2 as well.
@@ -37,11 +35,11 @@ API_KEY can be easily exported by running export API_KEY='your-api-key' in the t
 
 Now run 'pip install --editable .' and this should install the script in the virtual enviroment.
 
-## Usage
+# Usage
 
 commands supported are [price, portfolio]
 
-**price**
+## price
 
 'pycap price ada' -> [{'Cardano': '0.00001529'}]
 
@@ -49,9 +47,11 @@ price also supports different currencies as well as chaining mulitple coins.
 
 'pycap price --curr=usd ada hot' -> [{'Cardano': '0.09934988'}, {'Holo': '0.00060517'}]
 
---curr=xxx where xxx is the currency code
+--curr=XYZ where XYZ is the currency code. Check the link below for supported codes.
 
-**portfolio**
+https://pro.coinmarketcap.com/api/v1#section/Standards-and-Conventions
+
+## portfolio
 
 please edit the portfolio.json with your own balances.
 
@@ -65,8 +65,6 @@ you can also get the sum of total balance by doing
 
 Like with price, --curr option is supported
 
---curr=xxx where xxx is the currency code
-
-'pycap portfolio --curr=jpy --total=y' -> {'btc': 71885.40007175, 'ada': 10999200.22, 'iotx': 24222.056200000003, 'hot': 669992.7}
+'pycap portfolio --curr=jpy' -> {'btc': 71885.40007175, 'ada': 10999200.22, 'iotx': 24222.056200000003, 'hot': 669992.7}
 
 'pycap portfolio --curr=jpy --total=y' -> ¥11765300.376271749
