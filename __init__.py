@@ -11,8 +11,8 @@ if path.exists("dict.json") is False:
     payload = {"listing_status": "active", "start": "1"}
     hd = {"X-CMC_PRO_API_KEY": Config.API}
     request = requests.get(url, params=payload, headers=hd)
-    data = request.json()["data"]
     if request.status_code == 200:
+        data = request.json()["data"]
         cache = dict()
         for content in data:
             cache[content["symbol"].lower()] = content["id"]
@@ -20,4 +20,5 @@ if path.exists("dict.json") is False:
             json.dump(cache, f)
             f.close()
     else:
-        print("Did not work, please check the error\n{}".format(request.text))
+        print({"status code {}".format(request.status_code): request.json()
+               ["status"]["error_message"]})

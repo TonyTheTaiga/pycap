@@ -1,15 +1,22 @@
 import json
+from os import path
 
 # load JSON from file
 
 
 def loadJSON():
-    with open('dict.json', 'r') as f:
-        return json.load(f)
+    if path.exists("dict.json"):
+        with open('dict.json', 'r') as f:
+            return json.load(f)
+
+
+def loadPort():
+    if path.exists('portfolio.json'):
+        with open('portfolio.json', 'r') as f:
+            return json.load(f)
+
 
 # pretty prints JSON data
-
-
 def pretty(data):
     return print(json.dumps(data, indent=4, separators=(',', ': ')))
 
