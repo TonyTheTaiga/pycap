@@ -31,14 +31,34 @@ After this, run 'pip install --editable .' and this should install the script in
 
 ## Usage
 
-As of now (V0.1), the only command supported is price.
+commands supported are [price, portfolio]
 
-Basic layout = price [options][tickers]
+**price**
 
-'price ada' -> [{'Cardano': '0.00001529'}]
+'pycap price ada' -> [{'Cardano': '0.00001529'}]
 
 price also supports different currencies as well as chaining mulitple coins.
 
-'price --curr=usd ada hot' -> [{'Cardano': '0.09934988'}, {'Holo': '0.00060517'}]
+'pycap price --curr=usd ada hot' -> [{'Cardano': '0.09934988'}, {'Holo': '0.00060517'}]
 
 --curr=xxx where xxx is the currency code
+
+**portfolio**
+
+please edit the portfolio.json with your own balances.
+
+Format is {"symbol": units}
+
+'pycap portfolio' -> {'btc': 649.302288075, 'ada': 99349.88, 'iotx': 218.7848, 'hot': 6051.700000000001}
+
+you can also get the sum of total balance by doing
+
+'pycap portfolio --total=y' -> $106269.667088075
+
+Like with price, --curr option is supported
+
+--curr=xxx where xxx is the currency code
+
+'pycap portfolio --curr=jpy --total=y' -> {'btc': 71885.40007175, 'ada': 10999200.22, 'iotx': 24222.056200000003, 'hot': 669992.7}
+
+'pycap portfolio --curr=jpy --total=y' -> ¥11765300.376271749
