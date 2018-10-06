@@ -31,9 +31,9 @@ Now, start the virtual enviroment by running 'source env/bin/activate'.
 Your terminal should now look like something like '(env) pycap $ '.
 
 Next, your going to need to export your API_KEY or update the config.py file.
-API_KEY can be easily exported by running export API_KEY='your-api-key' in the terminal.
+API_KEY can be exported by running "export API_KEY='include-the-(')'" in the terminal.
 
-Now run 'pip install --editable .' and this should install the script in the virtual enviroment.
+Now run 'pip install --editable path/to/directory' and this should install the script in the virtual enviroment.
 
 # Usage
 
