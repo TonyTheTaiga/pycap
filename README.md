@@ -13,7 +13,7 @@ Working on adding support for other OS's. Windows will not work as of now with h
 Why? Because their public API shuts down in December.
 
 sandbox = https://sandbox.coinmarketcap.com/
-live = pro.coinmarketcap.com
+live = https://pro.coinmarketcap.com/
 
 sandbox and live API keys are not interchangable.
 
