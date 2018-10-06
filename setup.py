@@ -18,6 +18,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        pycap=init:cli
+        pycap=main:cli
     ''',
 )
