@@ -19,7 +19,7 @@ sandbox and live API keys are not interchangable.
 
 **Currently setup to use the sandbox site and not the live site**
 
-Can easily be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
+Can be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
 
 https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
