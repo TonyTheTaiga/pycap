@@ -2,7 +2,7 @@
 
 A simple CLI using Click with Coinmarketcap's API.
 
-## Pre-reqs
+# Pre-reqs
 
 **TESTED ONLY ON A MAC**
 
@@ -10,15 +10,15 @@ Working on adding support for other OS's. Windows will not work as of now with h
 
 **A coinmartketcap API Key**
 
-Their public API v2 shuts down in December.
+Why? Because their public API shuts down in December.
 
 **Currently uses the sandbox site and not the pro site**
 
-Can easily be changed by changing the \_\_base in api.py. Please reference the documents on instructions on how to do this.
+Can easily be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
 
 https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
-## Installation
+# Installation
 
 **As of now, this only works in a virtual enviroment in the project directory**
 
