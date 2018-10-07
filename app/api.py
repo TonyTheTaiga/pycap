@@ -4,24 +4,24 @@ from requests.compat import urljoin
 from config import Config
 from app.helper import loadJSON, loadPort, float_to_str
 
-_base = "https://sandbox-api.coinmarketcap.com"
 
-_info = "/v1/cryptocurrency/info"
+class Market(object):
 
-_latest = "/v1/cryptocurrency/listings/latest"
-
-_quote = "/v1/cryptocurrency/quotes/latest"
-
-
-class Market:
-
-    def __init__(self):
+    def __init__(self, ver):
         self.sym_id = loadJSON()
+        self.base_url = ''
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
+        self.setVer(ver)
+
+    def setVer(self, version):
+        if version == 'p':
+            self.base_url = Config.PRO
+        else:
+            self.base_url = Config.SANDBOX
 
     def getUSD(self, curr, ticker):
         uid = []
-        ret = dict()
+        ret = {}
 
         for x in ticker:
             if self.sym_id.__contains__(x):
@@ -32,7 +32,7 @@ class Market:
         uid = ','.join(uid)
         payload = {"id": uid, "convert": curr}
         request = requests.get(
-            urljoin(_base, _quote), params=payload, headers=self.apiKey)
+            urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
 
         if request.status_code == 200:
             data = request.json()['data']
@@ -45,16 +45,16 @@ class Market:
         return ret
 
 
-class Portfolio:
+class Portfolio(object):
 
     def __init__(self):
         self.wallet = loadPort()
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
 
-    def getBal(self, curr):
-        market = Market()
+    def getBal(self, curr, ver):
+        market = Market(ver)
         ticker = []
-        ret = dict()
+        ret = {}
 
         for x in self.wallet.keys():
             ticker.append(x)
@@ -64,5 +64,5 @@ class Portfolio:
 
         return (ret)
 
-    def getTot(self, curr):
-        return sum(self.getBal(curr).values())
+    def getTot(self, curr, ver):
+        return sum(self.getBal(curr, ver).values())
