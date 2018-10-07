@@ -1,4 +1,4 @@
-# PyCap V0.1
+# PyCap V0.2
 
 A simple CLI using Click with Coinmarketcap's API.
 
@@ -44,9 +44,15 @@ Now run 'pip install --editable .' and this should install the script in the vir
 
 # Usage
 
-commands : [price, portfolio]
+commands : price | portoflio | btc | update
 
 Supported Currency Codes are here: https://pro.coinmarketcap.com/api/v1#section/Standards-and-Conventions
+
+## btc
+
+prints price of btc
+
+'pycap btc' -> {'btc': '6580.44960555'}
 
 ## price
 
@@ -57,6 +63,10 @@ price also supports different currencies as well as chaining mulitple coins.
 'pycap price --curr=usd ada hot' -> [{'Cardano': '0.09934988'}, {'Holo': '0.00060517'}]
 
 --curr=XYZ where XYZ is the currency code.
+
+## update
+
+pycap update allows you to add coins to your porfolio
 
 ## portfolio
 

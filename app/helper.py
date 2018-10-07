@@ -11,7 +11,9 @@ def loadJSON():
         with open(path.join(Config.ROOT, 'dict.json'), 'r') as f:
             return json.load(f)
     else:
-        sys.exit(1)
+        createMap(Config.PRO)
+        with open(path.join(Config.ROOT, 'dict.json'), 'r') as f:
+            return json.load(f)
 
 
 def loadPort():
@@ -19,10 +21,18 @@ def loadPort():
         with open(path.join(Config.ROOT, 'portfolio.json'), 'r') as f:
             return json.load(f)
     else:
-        sys.exit(1)
+        with open(path.join(Config.ROOT, 'portfolio.json'), 'w') as f:
+            f.write("{}")
+        return {}
 
 
-def addPort():
+def dumpPort(load):
+    with open(path.join(Config.ROOT, 'portfolio.json'), 'w') as f:
+        json.dump(load, f)
+        f.close()
+
+
+def addPort(wallet, load):
     None
 
 
@@ -56,14 +66,15 @@ def createMap(base):
         hd = {"X-CMC_PRO_API_KEY": Config.API}
         request = requests.get(url, params=payload, headers=hd)
         if request.status_code == 200:
-            print('here')
             data = request.json()["data"]
             cache = {}
             for content in data:
                 cache[content["symbol"].lower()] = content["id"]
-            with open('./dict.json', 'w') as f:
+            with open(path.join(Config.ROOT, 'dict.json'), 'w') as f:
                 json.dump(cache, f)
                 f.close()
         else:
             print({"status code {}".format(request.status_code): request.json()
                    ["status"]["error_message"]})
+    else:
+        pass

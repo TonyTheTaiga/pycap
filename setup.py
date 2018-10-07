@@ -6,7 +6,7 @@ here = path.abspath(path.dirname(__file__))
 
 setup(
     name='PyCap',
-    version='0.1',
+    version='0.2',
     author='Taiga Ishida',
     author_email='taigaishida.dev@gmail.com',
     url='https://github.com/TonyTheTaiga/pycap',

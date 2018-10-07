@@ -2,7 +2,7 @@ import requests
 import json
 from requests.compat import urljoin
 from config import Config
-from app.helper import loadJSON, loadPort, float_to_str
+from app.helper import loadJSON, loadPort, float_to_str, addPort
 
 
 class Market(object):
@@ -55,14 +55,16 @@ class Portfolio(object):
         market = Market(ver)
         ticker = []
         ret = {}
-
-        for x in self.wallet.keys():
-            ticker.append(x)
-        prices = market.getUSD(curr.upper(), ticker)
-        for x, v in self.wallet.items():
-            ret[x] = v * float(prices[x])
+        if self.wallet != {}:
+            for x in self.wallet.keys():
+                ticker.append(x)
+            prices = market.getUSD(curr.upper(), ticker)
+            for x, v in self.wallet.items():
+                ret[x] = v * float(prices[x])
+        else:
+            ret = 'portfolio is empty'
 
         return (ret)
 
     def getTot(self, curr, ver):
-        return sum(self.getBal(curr, ver).values())
+        return sum(self.getBal(curr, ver).values()) if self.wallet != {} else "PORTFOLIO IS EMPTY"

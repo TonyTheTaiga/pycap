@@ -1,6 +1,7 @@
 import click
 
 from app.api import Portfolio
+from app.helper import loadPort, dumpPort
 
 
 @click.command()
@@ -13,3 +14,15 @@ def portfolio(curr, ver,  total):
         click.echo(portfolio.getBal(curr, ver))
     else:
         click.echo(portfolio.getTot(curr, ver))
+
+
+@click.command()
+def update():
+    load = {}
+    symbol = input("What coin would you like to update?\n")
+    units = float(input("New Amout?\n"))
+    load[symbol.strip()] = units
+    wallet = loadPort()
+    wallet.update(load)
+    dumpPort(wallet)
+    click.echo(wallet)
