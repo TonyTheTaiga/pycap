@@ -12,7 +12,7 @@ Working on adding support for other OS's. Windows will not work as of now with h
 
 **A coinmartketcap API Key**
 
-Why? Because their public API shuts down in December.
+Their public API shuts down in December.
 
 sandbox = https://sandbox.coinmarketcap.com/
 live = https://pro.coinmarketcap.com/
