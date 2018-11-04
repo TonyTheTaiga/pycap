@@ -8,5 +8,5 @@ from app.api import Market
 @click.argument('ticker', nargs=-1)
 def price(curr, ver, ticker):
     market = Market(ver)
-    ret = market.getUSD(curr.upper(), ticker)
+    ret = market.getPrice(curr.upper(), ticker)
     click.echo(ret)

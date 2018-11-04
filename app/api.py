@@ -13,13 +13,16 @@ class Market(object):
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
         self.setVer(ver)
 
+    # Sets the version of the API using the --ver flag
+
     def setVer(self, version):
         if version == 'p':
             self.base_url = Config.PRO
         else:
             self.base_url = Config.SANDBOX
+    # Gets a list of tickers and outputs the price
 
-    def getUSD(self, curr, ticker):
+    def getPrice(self, curr, ticker):
         uid = []
         ret = {}
 
@@ -58,7 +61,7 @@ class Portfolio(object):
         if self.wallet != {}:
             for x in self.wallet.keys():
                 ticker.append(x)
-            prices = market.getUSD(curr.upper(), ticker)
+            prices = market.getPrice(curr.upper(), ticker)
             for x, v in self.wallet.items():
                 ret[x] = v * float(prices[x])
         else:
