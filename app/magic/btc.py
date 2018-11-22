@@ -7,5 +7,5 @@ from app.api import Market
 @click.option('--ver', default="p", help='enter a version')
 def btc(curr, ver):
     market = Market(ver)
-    ret = market.getUSD(curr.upper(), ['btc', ])
+    ret = market.getPrice(curr.upper(), ['btc', ])
     click.echo(ret)
