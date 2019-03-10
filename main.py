@@ -4,11 +4,9 @@ from app.magic.portfolio import portfolio, update
 from app.magic.btc import btc
 from app.api import Market
 
-
 @click.group()
 def cli():
     pass
-
 
 cli.add_command(price)
 cli.add_command(portfolio)

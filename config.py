@@ -1,6 +1,5 @@
 import os
 
-
 class Config(object):
     API = os.environ.get('API_KEY') or 'you-key-here'
     SANDBOX = 'https://sandbox-api.coinmarketcap.com'
