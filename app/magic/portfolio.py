@@ -11,10 +11,14 @@ from app.helper import loadPort, dumpPort
 def portfolio(curr, ver,  total):
     portfolio = Portfolio()
     if total == "n":
-        click.echo(portfolio.getBal(curr, ver))
+        ret, percent_change = portfolio.getBal(curr, ver)
+        for i, x in enumerate(ret):
+            if percent_change[i] < 0:
+                click.secho(f'{x} : {ret[x]}', fg='red')
+            else:
+                click.secho(f'{x} : {ret[x]}', fg='green')
     else:
         click.echo(portfolio.getTot(curr, ver))
-
 
 @click.command()
 def update():

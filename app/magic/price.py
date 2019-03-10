@@ -7,14 +7,14 @@ from app.api import Market
 @click.option('--ver', default="p", help='enter a version')
 @click.argument('ticker', nargs=-1)
 def price(curr, ver, ticker):
-    market = Market(ver)
-    ret, percent_change = market.getPrice(curr.upper(), ticker)
+    market = Market()
+    price_book, percent_change = market.getPrice(curr.upper(), ticker)
     #print(percent_change)
-    #print(ret)
-    for i,x in enumerate(ret):        
+    #print(price_book)
+    for i,co in enumerate(price_book):        
         if percent_change[i] < 0:
-            click.secho(f'{x} : {ret[x]}', fg='red')
+            click.secho(f'{co} : {price_book[co]}', fg='red')
         else:
-            click.secho(f'{x} : {ret[x]}', fg='green')
+            click.secho(f'{co} : {price_book[co]}', fg='green')
         
-    click.echo(ret)
+    # click.echo(price_book)

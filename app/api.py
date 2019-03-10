@@ -7,11 +7,11 @@ from app.helper import loadJSON, loadPort, float_to_str, addPort
 
 class Market(object):
 
-    def __init__(self, ver):
+    def __init__(self):
         self.sym_id = loadJSON()
         self.base_url = ''
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
-        self.setVer(ver)
+        self.setVer('p')
 
     # Sets the version of the API using the --ver flag
 
@@ -28,6 +28,7 @@ class Market(object):
 
         for x in ticker:
             if self.sym_id.__contains__(x):
+                print(type(str(self.sym_id[x])))
                 uid.append(str(self.sym_id[x]))
             else:
                 ret[x] = "not a valid ticker"
@@ -51,6 +52,30 @@ class Market(object):
 
         return ret, percent_change
 
+    def getInfo(self, ticker):
+        uid = []
+        ret = {}
+        data = []
+
+        for i, x in enumerate(ticker):
+            if self.sym_id.__contains__(x):
+                print(x)
+                appendthis = str(self.sym_id[x])
+                print(type(appendthis))
+                uid[i] = appendthis
+            else:
+                ret[x] = "not a valid ticker"
+
+            uid = ','.join(uid)
+            payload = {"id": uid}
+            request = requests.get(
+                urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
+
+            if request.status_code == 200:
+                data = request.json()['data']
+
+        return data
+
 class Portfolio(object):
 
     def __init__(self):
@@ -58,19 +83,21 @@ class Portfolio(object):
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
 
     def getBal(self, curr, ver):
-        market = Market(ver)
+        market = Market()
         ticker = []
         ret = {}
         if self.wallet != {}:
             for x in self.wallet.keys():
                 ticker.append(x)
-            prices, _ = market.getPrice(curr.upper(), ticker)
+            prices, percent_change = market.getPrice(curr.upper(), ticker)
             for coin, amount in self.wallet.items():
                 ret[coin] = amount * float(prices[coin])
         else:
             ret = 'portfolio is empty'
 
-        return (ret)
+        return (ret), percent_change
 
     def getTot(self, curr, ver):
-        return sum(self.getBal(curr, ver).values()) if self.wallet != {} else "PORTFOLIO IS EMPTY"
+        sumthis, _ = self.getBal(curr,ver)
+        #calculate net gain/loss percentage here
+        return sum(sumthis.values()) if self.wallet != {} else "PORTFOLIO IS EMPTY"
