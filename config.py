@@ -9,3 +9,7 @@ class Config(object):
     LATEST = '/v1/cryptocurrency/listings/latest'
     MAP = '/v1/cryptocurrency/map'
     ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
+
+    

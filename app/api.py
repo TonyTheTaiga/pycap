@@ -30,23 +30,26 @@ class Market(object):
             if self.sym_id.__contains__(x):
                 uid.append(str(self.sym_id[x]))
             else:
-                ret[x] = "non valid ticker"
+                ret[x] = "not a valid ticker"
 
         uid = ','.join(uid)
         payload = {"id": uid, "convert": curr}
         request = requests.get(
             urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
 
+        percent_change = []
+
         if request.status_code == 200:
             data = request.json()['data']
             for content in data.values():
+                percent_change.append(content['quote']['BTC']['percent_change_1h'])
                 ret[content['symbol'].lower()] = float_to_str(
                     content['quote'][curr]['price'])
         else:
             ret[request.status_code] = request.json()["status"]["error_message"]
+            return ret, 0
 
-        return ret
-
+        return ret, percent_change
 
 class Portfolio(object):
 
