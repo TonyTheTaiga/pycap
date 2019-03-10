@@ -42,7 +42,7 @@ class Market(object):
         if request.status_code == 200:
             data = request.json()['data']
             for content in data.values():
-                percent_change.append(content['quote']['BTC']['percent_change_1h'])
+                percent_change.append(content['quote'][curr]['percent_change_1h'])
                 ret[content['symbol'].lower()] = float_to_str(
                     content['quote'][curr]['price'])
         else:
@@ -64,9 +64,9 @@ class Portfolio(object):
         if self.wallet != {}:
             for x in self.wallet.keys():
                 ticker.append(x)
-            prices = market.getPrice(curr.upper(), ticker)
-            for x, v in self.wallet.items():
-                ret[x] = v * float(prices[x])
+            prices, _ = market.getPrice(curr.upper(), ticker)
+            for coin, amount in self.wallet.items():
+                ret[coin] = amount * float(prices[coin])
         else:
             ret = 'portfolio is empty'
 

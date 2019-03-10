@@ -9,9 +9,12 @@ from app.api import Market
 def price(curr, ver, ticker):
     market = Market(ver)
     ret, percent_change = market.getPrice(curr.upper(), ticker)
-    print(percent_change)
-    print(ret)
-    for x,y in ret,percent_change:
-        if percent_change[y] < 0:
+    #print(percent_change)
+    #print(ret)
+    for i,x in enumerate(ret):        
+        if percent_change[i] < 0:
             click.secho(f'{x} : {ret[x]}', fg='red')
-    # click.echo(ret)
+        else:
+            click.secho(f'{x} : {ret[x]}', fg='green')
+        
+    click.echo(ret)
