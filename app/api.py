@@ -28,7 +28,7 @@ class Market(object):
 
         for x in ticker:
             if self.sym_id.__contains__(x):
-                print(type(str(self.sym_id[x])))
+                #print(type(str(self.sym_id[x])))
                 uid.append(str(self.sym_id[x]))
             else:
                 ret[x] = "not a valid ticker"
@@ -57,22 +57,19 @@ class Market(object):
         ret = {}
         data = []
 
-        for i, x in enumerate(ticker):
+        for x in ticker:
             if self.sym_id.__contains__(x):
-                print(x)
-                appendthis = str(self.sym_id[x])
-                print(type(appendthis))
-                uid[i] = appendthis
+                uid.append(str(self.sym_id[x]))
             else:
                 ret[x] = "not a valid ticker"
 
-            uid = ','.join(uid)
-            payload = {"id": uid}
-            request = requests.get(
-                urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
+        uid = ','.join(uid)
+        payload = {"id": uid}
+        request = requests.get(
+            urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
 
-            if request.status_code == 200:
-                data = request.json()['data']
+        if request.status_code == 200:
+            data = request.json()['data']
 
         return data
 
