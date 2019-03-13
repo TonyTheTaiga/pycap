@@ -20,6 +20,7 @@ class Market(object):
             self.base_url = Config.PRO
         else:
             self.base_url = Config.SANDBOX
+
     # Gets a list of tickers and outputs the price
     def makeRequest(self, curr, ticker):
         uid = []
@@ -36,10 +37,6 @@ class Market(object):
             urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
         
         return request
-
-
-
-
 
     def getPrice(self, curr, ticker):
         #uid = []
@@ -60,6 +57,7 @@ class Market(object):
         request = self.makeRequest(curr, ticker)
         
         percent_change = []
+        ret = {}
 
         if request.status_code == 200:
             data = request.json()['data']
