@@ -21,23 +21,44 @@ class Market(object):
         else:
             self.base_url = Config.SANDBOX
     # Gets a list of tickers and outputs the price
-
-    def getPrice(self, curr, ticker):
+    def makeRequest(self, ticker):
         uid = []
         ret = {}
-
+        
         for x in ticker:
             if self.sym_id.__contains__(x):
-                #print(type(str(self.sym_id[x])))
                 uid.append(str(self.sym_id[x]))
             else:
                 ret[x] = "not a valid ticker"
-
         uid = ','.join(uid)
-        payload = {"id": uid, "convert": curr}
+        payload = {"id":uid, "convert":curr}
         request = requests.get(
             urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
+        
+        return request
 
+
+
+
+
+    def getPrice(self, curr, ticker):
+        #uid = []
+        #ret = {}
+
+        #for x in ticker:
+        #     if self.sym_id.__contains__(x):
+        #         #print(type(str(self.sym_id[x])))
+        #         uid.append(str(self.sym_id[x]))
+        #     else:
+        #         ret[x] = "not a valid ticker"
+
+        # uid = ','.join(uid)
+        # payload = {"id": uid, "convert": curr}
+        # request = requests.get(
+        #     urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
+
+        request = self.makeRequest(ticker)
+        
         percent_change = []
 
         if request.status_code == 200:
@@ -53,21 +74,24 @@ class Market(object):
         return ret, percent_change
 
     def getInfo(self, ticker):
-        uid = []
-        ret = {}
+        # uid = []
+        # ret = {}
+
+        # for x in ticker:
+        #     if self.sym_id.__contains__(x):
+        #         uid.append(str(self.sym_id[x]))
+        #     else:
+        #         ret[x] = "not a valid ticker"
+
+        # uid = ','.join(uid)
+        # payload = {"id": uid}
+        # request = requests.get(
+        #     urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
+
+        request = self.makeRequest(ticker)
+
         data = []
-
-        for x in ticker:
-            if self.sym_id.__contains__(x):
-                uid.append(str(self.sym_id[x]))
-            else:
-                ret[x] = "not a valid ticker"
-
-        uid = ','.join(uid)
-        payload = {"id": uid}
-        request = requests.get(
-            urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
-
+        
         if request.status_code == 200:
             data = request.json()['data']
 
