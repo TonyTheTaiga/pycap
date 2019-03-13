@@ -11,8 +11,9 @@ def price(curr, ver, ticker):
     price_book, percent_change = market.getPrice(curr.upper(), ticker)
     #print(percent_change)
     #print(price_book)
-    for i,co in enumerate(price_book):        
+    for i, coin in enumerate(price_book): 
+        print(percent_change)       
         if percent_change[i] < 0:
-            click.secho(f'{co} : {price_book[co]}', fg='red')
+            click.secho(f'{coin} : {price_book[coin]}', fg='red')
         else:
-            click.secho(f'{co} : {price_book[co]}', fg='green')
+            click.secho(f'{coin} : {price_book[coin]}', fg='green')

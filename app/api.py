@@ -9,9 +9,9 @@ class Market(object):
 
     def __init__(self):
         self.sym_id = loadJSON()
-        self.base_url = ''
+        self.base_url = Config.PRO
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
-        self.setVer('p')
+        # self.setVer('p')
 
     # Sets the version of the API using the --ver flag
     '''
@@ -19,11 +19,11 @@ class Market(object):
     because going forward we are only
     using pro version
     # '''
-    def setVer(self, version):
-        if version == 'p':
-            self.base_url = Config.PRO
-        else:
-            self.base_url = Config.SANDBOX
+    # def setVer(self, version):
+    #     if version == 'p':
+    #         self.base_url = Config.PRO
+    #     else:
+    #         self.base_url = Config.SANDBOX
 
     # Gets a list of tickers and outputs the price
     def makeRequest(self, curr, ticker):
@@ -71,6 +71,7 @@ class Market(object):
                 ret[content['symbol'].lower()] = float_to_str(
                     content['quote'][curr]['price'])
         else:
+            print('im here')
             ret[request.status_code] = request.json()["status"]["error_message"]
             return ret, 0
 
