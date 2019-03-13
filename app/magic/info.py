@@ -4,9 +4,11 @@ from app.api import Market
 
 @click.command()
 @click.argument('ticker',nargs=-1)
-def info(ticker):
+@click.option('--curr', default="BTC", help='Enter A Currency Code, Default is BTC')
+@click.argument('')
+def info(curr, ticker):
     market = Market() 
-    data = market.getInfo(ticker)
+    data = market.getInfo(curr, ticker)
     ids = (list(data.values())[0]).keys()
     for content in data.values():
         for i in ids:
