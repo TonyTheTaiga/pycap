@@ -19,11 +19,11 @@ class Market(object):
     because going forward we are only
     using pro version
     # '''
-    # def setVer(self, version):
-    #     if version == 'p':
-    #         self.base_url = Config.PRO
-    #     else:
-    #         self.base_url = Config.SANDBOX
+    def setVer(self, version):
+        if version == 'p':
+            self.base_url = Config.PRO
+        else:
+            self.base_url = Config.SANDBOX
 
     # Gets a list of tickers and outputs the price
     def makeRequest(self, curr, ticker):
