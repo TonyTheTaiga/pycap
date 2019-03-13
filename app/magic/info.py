@@ -1,6 +1,6 @@
 import click
 from app.api import Market
-from app.magic.coin import Coin
+#from app.magic.coin import Coin
 
 @click.command()
 @click.option('--curr', default="BTC", help='Enter A Currency Code, Default is BTC')
@@ -11,7 +11,7 @@ def info(curr, ticker):
     data = market.getInfo(curr, ticker)
     #ids = (list(data.values())[0]).keys()
     for content in data.values():
-        c = Coin(curr, content)
+        #c = Coin(curr, content)
         for key in c.coin_dict:
             if type(c.coin_dict[key]) == int or type(c.coin_dict[key]) == float:
                 if c.coin_dict[key] < 0:
