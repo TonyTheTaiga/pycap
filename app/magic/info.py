@@ -20,13 +20,4 @@ def info(curr, ticker):
                     click.secho(f'{key}: {c.coin_dict[key]}', fg='green')
             else:
                 click.secho(f'{key}: {c.coin_dict[key]}')
-
-        '''
-        for i in ids:
-            if i != 'quote':
-                print(str(i)+": "+str(content[i])) 
-            else:
-                for quote_data in content['quote'][curr]:
-                    print(str(quote_data)+": "+str(content['quote'][curr][quote_data]))
-        '''
         print('--------------------------------------')
