@@ -11,21 +11,7 @@ class Market(object):
         self.sym_id = loadJSON()
         self.base_url = Config.PRO
         self.apiKey = {"X-CMC_PRO_API_KEY": Config.API}
-        # self.setVer('p')
-
-    # Sets the version of the API using the --ver flag
-    '''
-    Not sure if this is needed anymore
-    because going forward we are only
-    using pro version
-    # '''
-    # def setVer(self, version):
-    #     if version == 'p':
-    #         self.base_url = Config.PRO
-    #     else:
-    #         self.base_url = Config.SANDBOX
-
-    # Gets a list of tickers and outputs the price
+       
     def makeRequest(self, curr, ticker):
         '''
         make coins here
@@ -49,24 +35,6 @@ class Market(object):
             print(request)
 
     def getPrice(self, curr, ticker):
-        '''
-        request = self.makeRequest(curr, ticker)
-        percent_change = []
-        ret = {}
-        if request.status_code == 200:
-            data = request.json()['data']
-            for content in data.values():
-                percent_change.append(
-                    content['quote'][curr]['percent_change_1h'])
-                ret[content['symbol'].lower()] = float_to_str(
-                    content['quote'][curr]['price'])
-        else:
-            print('im here')
-            print(request.json())
-            ret[request.status_code] = request.json()["status"]["error_message"]
-            return ret, 0
-        return ret, percent_change
-        '''
         percent_change=[]
         ret={}
         data = self.getInfo(curr,ticker)
