@@ -29,15 +29,18 @@ class Market(object):
         request = requests.get(
             urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
 
-        if request.status_code == 200 or None:
+        if request.status_code == 200:
             return request
         else:
-            print(request)
+            return request
 
     def getPrice(self, curr, ticker):
         percent_change=[]
         ret={}
         data = self.getInfo(curr,ticker)
+        if data == None:
+            print('Could not pull data, exiting')
+            return ret, None
         for content in data.values():
             coin = Coin(curr,content)
             percent_change.append(coin.coin_dict['percent_change_1h'])
@@ -49,8 +52,9 @@ class Market(object):
         data = []
         if request.status_code == 200:
             data = request.json()['data']
-        return data
-
+            return data
+        else:
+            return None
 
 class Portfolio(object):
 
