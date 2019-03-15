@@ -12,6 +12,8 @@ def info(curr, ticker):
     #ids = (list(data.values())[0]).keys()
     for content in data.values():
         c = Coin(curr, content)
+        c.echo_info()
+        '''
         for key in c.coin_dict:
             if type(c.coin_dict[key]) == int or type(c.coin_dict[key]) == float:
                 if c.coin_dict[key] < 0:
@@ -20,4 +22,5 @@ def info(curr, ticker):
                     click.secho(f'{key}: {c.coin_dict[key]}', fg='green')
             else:
                 click.secho(f'{key}: {c.coin_dict[key]}')
+        '''
         print('--------------------------------------')

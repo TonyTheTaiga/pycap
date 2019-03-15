@@ -43,8 +43,9 @@ class Market(object):
             return ret, None
         for content in data.values():
             coin = Coin(curr,content)
-            percent_change.append(coin.coin_dict['percent_change_1h'])
-            ret[content['symbol'].lower()] = float_to_str(content['quote'][curr]['price'])
+            #percent_change.append(coin.coin_dict['percent_change_1h'])
+            percent_change.append(coin.percent_change_1h)
+            ret[coin.symbol.lower()] = float_to_str(coin.price)
         return ret, percent_change
 
     def getInfo(self, curr, ticker):
