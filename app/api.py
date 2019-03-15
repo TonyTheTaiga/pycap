@@ -27,6 +27,9 @@ class Market(object):
 
     # Gets a list of tickers and outputs the price
     def makeRequest(self, curr, ticker):
+        '''
+        make coins here
+        '''
         uid = []
         ret = {}
 
@@ -43,21 +46,6 @@ class Market(object):
         return request
 
     def getPrice(self, curr, ticker):
-        #uid = []
-        #ret = {}
-
-        # for x in ticker:
-        #     if self.sym_id.__contains__(x):
-        #         #print(type(str(self.sym_id[x])))
-        #         uid.append(str(self.sym_id[x]))
-        #     else:
-        #         ret[x] = "not a valid ticker"
-
-        # uid = ','.join(uid)
-        # payload = {"id": uid, "convert": curr}
-        # request = requests.get(
-        #     urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
-
         request = self.makeRequest(curr, ticker)
 
         percent_change = []
@@ -72,26 +60,13 @@ class Market(object):
                     content['quote'][curr]['price'])
         else:
             print('im here')
+            print(request.json())
             ret[request.status_code] = request.json()["status"]["error_message"]
             return ret, 0
 
         return ret, percent_change
 
     def getInfo(self, curr, ticker):
-        # uid = []
-        # ret = {}
-
-        # for x in ticker:
-        #     if self.sym_id.__contains__(x):
-        #         uid.append(str(self.sym_id[x]))
-        #     else:
-        #         ret[x] = "not a valid ticker"
-
-        # uid = ','.join(uid)
-        # payload = {"id": uid}
-        # request = requests.get(
-        #     urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
-
         request = self.makeRequest(curr, ticker)
 
         data = []
