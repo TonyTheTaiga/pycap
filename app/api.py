@@ -3,7 +3,7 @@ import json
 from requests.compat import urljoin
 from config import Config
 from app.helper import loadJSON, loadPort, float_to_str, addPort
-
+from app.magic.coin import Coin
 
 class Market(object):
 
@@ -43,14 +43,16 @@ class Market(object):
         request = requests.get(
             urljoin(self.base_url, Config.QUOTE), params=payload, headers=self.apiKey)
 
-        return request
+        if request.status_code == 200 or None:
+            return request
+        else:
+            print(request)
 
     def getPrice(self, curr, ticker):
+        '''
         request = self.makeRequest(curr, ticker)
-
         percent_change = []
         ret = {}
-
         if request.status_code == 200:
             data = request.json()['data']
             for content in data.values():
@@ -63,17 +65,22 @@ class Market(object):
             print(request.json())
             ret[request.status_code] = request.json()["status"]["error_message"]
             return ret, 0
-
+        return ret, percent_change
+        '''
+        percent_change=[]
+        ret={}
+        data = self.getInfo(curr,ticker)
+        for content in data.values():
+            coin = Coin(curr,content)
+            percent_change.append(coin.coin_dict['percent_change_1h'])
+            ret[content['symbol'].lower()] = float_to_str(content['quote'][curr]['price'])
         return ret, percent_change
 
     def getInfo(self, curr, ticker):
         request = self.makeRequest(curr, ticker)
-
         data = []
-
         if request.status_code == 200:
             data = request.json()['data']
-
         return data
 
 
