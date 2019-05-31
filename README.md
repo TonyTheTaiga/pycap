@@ -1,15 +1,15 @@
 # PyCap V0.2
+# A simple python CLI using Click with Coinmarketcap's API.
 
-A simple python CLI using Click with Coinmarketcap's API.
 
-**A coinmartketcap API Key**
+API Keys can be obtained from the link below.
 
 sandbox = https://sandbox.coinmarketcap.com/
 live = https://pro.coinmarketcap.com/
 
-sandbox and live API keys are not interchangable.
+sandbox/live API keys are NOT interchangable.
 
-Can be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
+Can be changed to the sandbox version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
 
 https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
