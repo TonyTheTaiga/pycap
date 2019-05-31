@@ -9,8 +9,9 @@ live = https://pro.coinmarketcap.com/
 
 sandbox/live API keys are NOT interchangable.
 
-Can be changed to the sandbox version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
-
+# By default the app uses the LIVE VERSION of the site, make sure you have a LIVE API_KEY.
+ 
+App can be changed to the sandbox version by changing \_\_base in api.py. Refer Below. 
 https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
 # Installation
