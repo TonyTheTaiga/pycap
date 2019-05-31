@@ -1,25 +1,13 @@
 # PyCap V0.2
 
-A simple CLI using Click with Coinmarketcap's API.
-
-# Pre-reqs
-
-**Python**
-
-**TESTED ONLY ON A MAC**
-
-Working on adding support for other OS's. Windows will not work as of now with how the API_KEY is exported, Linux might work.
+A simple python CLI using Click with Coinmarketcap's API.
 
 **A coinmartketcap API Key**
-
-Their public API shuts down in December.
 
 sandbox = https://sandbox.coinmarketcap.com/
 live = https://pro.coinmarketcap.com/
 
 sandbox and live API keys are not interchangable.
-
-**Currently setup to use the sandbox site and not the live site**
 
 Can be changed to the live version by changing \_\_base in api.py. Please reference the documents on instructions on how to do this.
 
@@ -27,20 +15,11 @@ https://pro.coinmarketcap.com/api/v1#section/Quick-Start-Guide
 
 # Installation
 
-**As of now, this only works in a virtual enviroment in the project directory**
-
 First, clone this repository and open up the directory in a terminal.
 
-Next, run 'python3 -m venv env'. this should work in python2 as well.
-
-Now, start the virtual enviroment by running 'source env/bin/activate'.
-
-Your terminal should now look like something like '(env) pycap $ '.
-
-Next, your going to need to export your API_KEY or update the config.py file.
 API_KEY can be exported by running "export API_KEY='include-the-(')'" in the terminal.
 
-Now run 'pip install --editable .' and this should install the script in the virtual enviroment.
+Run 'pip install --editable .' (<--- dont forget the period) and this should install the script in the virtual enviroment.
 
 # Usage
 
